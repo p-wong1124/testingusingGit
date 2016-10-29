@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<!-- firebase -->
+	<script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+<script>
+	  // Initialize Firebase
+	  var config = {
+		apiKey: "AIzaSyCG1JaviJbzxpYZ2q_bFnRErPQRz3ZoqHA",
+		authDomain: "quickstart-for-authentication.firebaseapp.com",
+		databaseURL: "https://quickstart-for-authentication.firebaseio.com",
+		storageBucket: "quickstart-for-authentication.appspot.com",
+		messagingSenderId: "148483661007"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+<!-- firebase end-->
+<!-- Angular JS load-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>-->
+<!-- Andular JS end-->
+<script src = "testing1.js"></script>
+<script>
+function checkLogin(){
+var user = firebase.auth().currentUser;
+
+if (user) {
+  // User is signed in.
+  	alert("Welcome back, "+user.displayName);
+  
+} else {
+  // No user is signed in.
+  	  alert("Oh plz login first");
+
+}};
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+	alert("Welcome back" + user.displayName);
+  } else {
+    // No user is signed in.
+	  alert("Oh plz login first");
+  }
+});
+</script>
+</head>
+
+<body ng-app = "showALLApp">
+<p>Hello Here is your login information</p>
+<form id="form1" name="form1" method="post" action="">
+  <p>Login Name: 
+    <input type="text" name="loginName" id="loginName" />
+  </p>
+  <p>
+    <label for="Pw">Password</label>
+    <input type="password" name="Pw" id="Pw" />
+  </p>
+  <p>
+    <input type="submit" name="submit" id="submit" value="Submit" />
+  </p>
+</form>
+<input type = "button" onclick="checkLogin()" value="checkcheck" />
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div name = "DisplayZone" ng-controller = "showALL">
+{{DisplayWord}}
+</div>
+</body>
+</html>
